@@ -10,3 +10,6 @@ screen = dis.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 while True:
     time.sleep(1)
     t = event.get()
+    for i in t:
+        if i.type == pygame.QUIT:
+            exit()
