@@ -13,3 +13,5 @@ def control():
                 model.move_platform_right()
             if i.key == pygame.K_LEFT:
                 model.move_platform_left()
+
+
