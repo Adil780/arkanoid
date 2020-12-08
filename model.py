@@ -10,6 +10,13 @@ ball.centery = settings.SCREEN_HEIGHT / 2
 speedx = 5
 speedy = 5
 
+def move_platform_to(posx):
+    platform.centerx = posx
+    if platform.right >= settings.SCREEN_WIDTH:
+        platform.right = settings.SCREEN_WIDTH
+    if platform.left <= 0:
+        platform.left = 0
+
 def move_platform_right():
     platform.x += 5
     if platform.right >= settings.SCREEN_WIDTH:
@@ -42,3 +49,6 @@ def step():
         ball.bottom = settings.SCREEN_HEIGHT
         speedy = -5
 
+    if ball.colliderect(platform):
+        ball.bottom = platform.top
+        speedy = -5
