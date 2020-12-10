@@ -3,6 +3,12 @@ import pygame, settings
 platform = pygame.Rect(550, 720, 170, 20)
 platform.centerx = settings.SCREEN_WIDTH / 2
 
+blocks = []
+for l in range(5):
+    for i in range(0, settings.SCREEN_WIDTH, 50):
+        block = pygame.Rect(i, l * 50, 49, 49)
+        blocks.append(block)
+
 ball = pygame.Rect(600, 500, 50, 50)
 ball.centerx = settings.SCREEN_WIDTH / 2
 ball.centery = settings.SCREEN_HEIGHT / 2
@@ -36,19 +42,19 @@ def step():
 
     if ball.right >= settings.SCREEN_WIDTH:
         ball.right = settings.SCREEN_WIDTH
-        speedx = -5
+        speedx = -10
     if ball.left <= 0:
         ball.left = 0
-        speedx = 5
+        speedx = 10
 
     ball.y += speedy
     if ball.top <= 0:
         ball.top = 0
-        speedy = 5
+        speedy = 10
     if ball.bottom >= settings.SCREEN_HEIGHT:
         ball.bottom = settings.SCREEN_HEIGHT
-        speedy = -5
+        speedy = -10
 
     if ball.colliderect(platform):
         ball.bottom = platform.top
-        speedy = -5
+        speedy = -10
