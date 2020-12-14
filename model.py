@@ -4,7 +4,7 @@ platform = pygame.Rect(550, 720, 170, 20)
 platform.centerx = settings.SCREEN_WIDTH / 2
 
 blocks = []
-for l in range(5):
+for l in range(3, 5):
     for i in range(0, settings.SCREEN_WIDTH, 50):
         block = pygame.Rect(i, l * 50, 49, 49)
         blocks.append(block)
@@ -58,3 +58,15 @@ def step():
     if ball.colliderect(platform):
         ball.bottom = platform.top
         speedy = -10
+
+
+
+    p = ball.collidelistall(blocks)
+    p.sort(reverse=True)
+    for b in p:
+        if ball.top <= blocks[b].bottom:
+            speedy = 10
+        del blocks[b]
+
+
+
