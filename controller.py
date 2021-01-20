@@ -2,9 +2,10 @@ import pygame, model, settings
 pygame.init()
 pygame.key.set_repeat(1)
 pygame.mouse.set_visible(False)
-def control():
-    t = pygame.event.get()
 
+def control():
+    model.lost_live()
+    t = pygame.event.get()
     for i in t:
         if i.type == pygame.QUIT:
             exit()
@@ -18,6 +19,12 @@ def control():
                 model.move_platform_right()
             if i.key == pygame.K_LEFT:
                 model.move_platform_left()
+
+        if i.type == pygame.MOUSEBUTTONDOWN:
+            model.play_match()
+
+
+
 
 
 
