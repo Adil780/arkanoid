@@ -1,5 +1,5 @@
 import pygame, settings
-
+pygame.init()
 platform = pygame.Rect(550, 720, 170, 20)
 platform.centerx = settings.SCREEN_WIDTH / 2
 
