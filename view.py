@@ -22,18 +22,20 @@ def change_text():
 def game_over():
     global gmov
     if model.lives < 0:
-        screen.fill([0, 0, 0])
-        gmov = h.render("GAME OVER", True, [255, 255, 255])
-        gw = gmov.get_width()
-        gh = gmov.get_height()
-        rect = pygame.Rect(50, 50, gw, gh)
-        rect.center = [settings.SCREEN_WIDTH / 2, settings.SCREEN_HEIGHT / 2]
-        screen.blit(gmov, rect)
+        draw_text_in_center("GAME OVER")
 
+def win():
+    if len(model.blocks) == 0:
+        draw_text_in_center("YOU WON")
 
-
-
-
+def draw_text_in_center(text):
+    screen.fill([0, 0, 0])
+    gmov = h.render(text, True, [255, 255, 255])
+    gw = gmov.get_width()
+    gh = gmov.get_height()
+    rect = pygame.Rect(50, 50, gw, gh)
+    rect.center = [settings.SCREEN_WIDTH / 2, settings.SCREEN_HEIGHT / 2]
+    screen.blit(gmov, rect)
 
 
 
@@ -47,4 +49,6 @@ def draw():
     pygame.draw.circle(screen, [0, 0, 255], [model.ball.centerx, model.ball.centery], model.ball.width // 2)
     screen.blit(liwes, [1050, 750])
     game_over()
+    win()
+
     pygame.display.flip()
